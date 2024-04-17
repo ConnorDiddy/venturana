@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 251 251.04">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient);
+        stroke: #adbfed;
+        stroke-miterlimit: 10;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1=".5" y1="315.83" x2="250.5" y2="315.83" gradientTransform="translate(0 441.35) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#adbfed"/>
+      <stop offset="1" stop-color="#fac3eb"/>
+    </linearGradient>
+  </defs>
+  <g id="Capa_1" data-name="Capa 1">
+    <g id="Capa_1-2" data-name="Capa 1">
+      <path class="cls-1" d="m241.3,1.13l-26.46,12.04c-1.69.78-3.26,1.85-4.59,3.18l-43.12,43.14L18.65,41.69c-2.68-.31-5.4.6-7.3,2.53l-8.26,8.26c-4.38,4.38-3.02,11.78,2.63,14.31l106.41,47.7-30.55,30.55H28.22c-2.35,0-4.59.94-6.26,2.58l-4.46,4.48c-4.43,4.43-2.97,11.91,2.76,14.36l45.02,19.29,19.29,45.02c2.45,5.73,9.96,7.19,14.36,2.76l4.48-4.48c1.67-1.67,2.58-3.91,2.58-6.26v-53.36l30.55-30.55,47.7,106.43c2.53,5.66,9.93,7.01,14.31,2.63l8.26-8.26c1.93-1.93,2.84-4.61,2.53-7.3l-17.83-148.48,43.14-43.14c1.33-1.33,2.4-2.87,3.18-4.59l12.04-26.46c2.53-5.45-3.1-11.1-8.6-8.6l.03.02Z"/>
+    </g>
+  </g>
+</svg>

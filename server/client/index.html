@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Venturana</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/airplane.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+
+<body>
+    <div id="app">
+
+        <div id="notification-div" v-if="userNotification" class="popup error">
+            <h1 class="popup-title">Note</h1>
+            <h3>{{ userNotification }}</h3>
+            <button class="clear-btn-light" @click="handleCancelNotification">Close</button>
+        </div>
+
+        <div id="error-div" v-if="popups.showError" class="popup error">
+            <h1 class="popup-title">Error</h1>
+            <div v-for="error in errors">
+                <p>{{ error }}</p>
+            </div>
+            <button class="clear-btn-light" @click="handleCancelError">Close</button>
+        </div>
+
+        <div id="signup-div" class="popup" v-if="popups.showSignUp">
+            <h1 class="popup-title">Sign up</h1>
+            <input type="text" placeholder="First Name" v-model="signUpForm.firstName" class="login-form-field"
+                :style="{ 'background-color': signUpForm.firstNameError }">
+            <input type="text" placeholder="Last Name" v-model="signUpForm.lastName" class="login-form-field">
+            <input type="text" placeholder="Email" v-model="signUpForm.email" class="login-form-field">
+            <input type="password" placeholder="Password" v-model="signUpForm.password1" class="login-form-field">
+            <input type="password" placeholder="Confirm Password" v-model="signUpForm.password2"
+                class="login-form-field">
+            <div id="button-div">
+                <button id="cancel-signup-btn" class="clear-btn-light" @click="handleCancelSignUp">Cancel</button>
+                <button id="signup-submit-btn" class="purple-btn" @click="signUp">Sign Up</button>
+            </div>
+        </div>
+
+        <div id="login-div" v-if="popups.showLogin" class="popup">
+            <h1 class="popup-title">Log in</h1>
+            <input type="text" placeholder="Email" v-model="loginForm.email" class="login-form-field">
+            <input type="password" placeholder="Password" v-model="loginForm.password" class="login-form-field">
+            <div id="button-div">
+                <button id="cancel-login-btn" class="clear-btn-light" @click="handleCancelLogin">Cancel</button>
+                <button id="signup-login-btn" class="purple-btn" @click="login">Login</button>
+            </div>
+        </div>
+
+        <div id="addTrip-div" v-if="popups.showAddTrip" class="popup">
+            <h1 class="popup-title">New Trip</h1>
+            <input type="text" placeholder="Name" v-model="newTripForm.name" class="login-form-field">
+            <input type="text" placeholder="Trip details" v-model="newTripForm.details" class="login-form-field">
+            <input type="date" placeholder="Start Date" v-model="newTripForm.startDate" class="login-form-field">
+            <input type="date" placeholder="End Date" v-model="newTripForm.endDate" class="login-form-field">
+            <div id="button-div">
+                <button id="cancel-login-btn" class="clear-btn-light" @click="handleCancelAddTrip">Cancel</button>
+                <button id="signup-login-btn" class="purple-btn" @click="addTrip">Create</button>
+            </div>
+        </div>
+
+        <div id="addDream-div" v-if="popups.showAddDream" class="popup">
+            <h1 class="popup-title">New Bucket List Item</h1>
+            <input type="text" placeholder="Name of place" v-model="newDreamForm.destination" class="login-form-field">
+            <input type="text" placeholder="Notes" v-model="newDreamForm.notes" class="login-form-field">
+            <input type="number" placeholder="Budget" v-model="newDreamForm.budget" class="login-form-field">
+            <div id="button-div">
+                <button id="cancel-login-btn" class="clear-btn-light" @click="handleCancelAddDream">Cancel</button>
+                <button id="signup-login-btn" class="purple-btn" @click="addDream">Create</button>
+            </div>
+        </div>
+
+        <div id="navbar-full">
+            <div id="navbar">
+                <img id="nav-logo" src="images/logo2.svg">
+                <div id="nav-buttons">
+                    <button id="login-btn" class="clear-btn" @click="handleShowLogin" v-if="!loggedIn">Login</button>
+                    <button id="signup-btn" class="pink-btn" @click="handleShowSignUp" v-if="!loggedIn">Sign Up</button>
+                    <button id="logout-btn" class="purple-btn" @click="logout" v-if="loggedIn">Logout</button>
+                </div>
+            </div>
+        </div>
+        <h3 id="log-in-text" v-if="!loggedIn">You must log in to view the dashboard</h3>
+        <div id="dashboard" v-if="popups.showDashboard">
+            <div id="menu">
+                <div id="menu-title">
+                    Trip Planner
+                    <img id="add-new-trip-button" src="images/add-new-icon.svg" @click="handleShowAddTrip">
+                </div>
+                <div id="bucket-list" @click="showBucketListDetails()"
+                    :class="{ 'bucket-list' : true, 'selected' : popups.showBucketList }">
+                    Bucket List
+                </div>
+                <div :id="trip._id" @click="showTripDetails(trip._id)" v-for="trip in trips"
+                    :class="{ 'trip' : true, 'selected' : trip.selected }">
+                    {{ trip.name }}
+                </div>
+            </div>
+            <div id="details">
+                <div id="bucket-list-details" v-if="popups.showBucketList">
+                    <div id="bucket-list-top-block">
+                        <div id="details-title">Bucket List</div>
+                        <button id="add-bl-item-btn" @click="handleShowAddDream">Add New</button>
+                    </div>
+                    <table id="bucket-list-table">
+                        <tr>
+                            <th>Destination</th>
+                            <th>Completed?</th>
+                            <th>Notes</th>
+                            <th>Budget</th>
+                            <th>Delete</th>
+                        </tr>
+                        <tr v-for="dream in dreams" :key="dream.id">
+                            <td>{{ dream.destination }}</td>
+                            <td>
+                                <input type="checkbox" v-model="dream.completed"
+                                    @click="(toggleCompletedDream(dream._id))">
+                            </td>
+                            <td>{{ dream.notes }}</td>
+                            <td>{{ dream.budget }}</td>
+                            <td><img src="images/delete-icon.svg" class="delete-icon" @click="deleteDream(dream._id)">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div v-if="popups.showTrip" style="width: 100%;">
+                    <div id="bucket-list-top-block">
+                        <div id="details-title" class="detailsTitle">{{ selectedTrip.name }} - {{
+                            selectedTrip.duration }} days long</div>
+                        <button id="add-bl-item-btn" @click="deleteTrip">Delete</button>
+                    </div>
+
+                    <div id="trip-div">
+                        <div class="flex-row">
+                            <img class="details-icon" src="images/calendar.png">
+                            <p class="trip-date">
+                                <span class="pink-text">Dates: </span><span class="white-text">{{
+                                    selectedTrip.startDate}} - {{ selectedTrip.endDate }}</span>
+                            </p>
+                        </div>
+
+                        <div class="flex-row">
+                            <img class="details-icon" src="images/countdown.png">
+                            <p class="trip-date">
+                                <span class="pink-text">Countdown: </span><span class="white-text">{{
+                                    selectedTrip.countDown }} days</span>
+                            </p>
+                        </div>
+                        <p class="pink-text">Details</p>
+                        <textarea class="trip-details">{{ selectedTrip.details }}</textarea>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

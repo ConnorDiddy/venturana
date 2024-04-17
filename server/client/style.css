@@ -1,0 +1,353 @@
+body {
+  background-color: #c5c0ec;
+  padding: 0;
+  margin: 0;
+  font-family: "Play", sans-serif;
+  font-family: "PT Sans", sans-serif;
+}
+
+button {
+  font-family: "Play", sans-serif;
+  font-family: "PT Sans", sans-serif;
+}
+
+.trip.selected {
+  background: linear-gradient(45deg, #adbfed 0%, #9a90e6 60%);
+  color: white;
+  border-radius: 0;
+}
+
+.trip.selected:hover {
+  background-color: aqua;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#navbar-full {
+  width: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+}
+
+#navbar {
+  width: 100%;
+  max-width: 1080px;
+  background-color: white;
+  height: 112px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#nav-logo {
+  padding: 8px;
+  max-width: 250px;
+}
+
+#nav-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.clear-btn {
+  margin: 10px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.clear-btn-light {
+  margin: 10px;
+  background: transparent;
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+  border: white;
+  border-style: solid;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.clear-btn:hover {
+  color: gray;
+}
+
+.pink-btn {
+  background: linear-gradient(
+    357deg,
+    rgba(235, 135, 207, 1) 0%,
+    rgb(250 193 234) 60%
+  );
+  margin: 10px;
+  border: none;
+  border-radius: 8px;
+  padding: 6px;
+  padding-left: 23px;
+  padding-right: 23px;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+}
+
+.pink-btn:hover {
+  background: rgb(210, 116, 183);
+}
+
+#main-block {
+  margin-top: 30px;
+  background-color: white;
+  width: 80%;
+  min-width: 900px;
+  max-width: 1080px;
+  height: 70vh;
+  border-radius: 8px;
+}
+
+#dashboard {
+  margin-top: 30px;
+  height: 70vh;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 1080px;
+  display: flex;
+  flex-direction: row;
+}
+
+#menu {
+  width: 30%;
+  height: 100%;
+  background-color: white;
+  border-radius: 8px 0px 0px 8px;
+}
+
+#details {
+  display: flex;
+  width: 70%;
+  height: 100%;
+  border-radius: 0px 8px 8px 0px;
+  background-color: #484848;
+}
+
+#bucket-list {
+  text-align: center;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 21px;
+  border-bottom: black;
+  border-bottom-style: solid;
+  cursor: pointer;
+}
+
+.bucket-list.selected {
+  background: linear-gradient(45deg, #adbfed 0%, #9a90e6 60%);
+  color: white;
+  border-radius: 0;
+}
+
+.trip {
+  text-align: center;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 21px;
+  border-bottom: black;
+  border-bottom-style: solid;
+  border-radius: 8px 0px 0px 0px;
+  cursor: pointer;
+}
+
+.trip:hover {
+  background-color: #dddddd;
+  border-radius: 0;
+}
+
+#add-new-trip-button {
+  width: 28px;
+  cursor: pointer;
+}
+
+#menu-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 18px;
+  border-bottom: black;
+  border-bottom-style: solid;
+  padding: 4px;
+  border-radius: 8px 0px 0px 0px;
+}
+
+#details-title {
+  font-size: 30px;
+  color: #fac3eb;
+  padding: 20px;
+}
+
+#bucket-list-top-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 70px;
+  width: 100%;
+  align-items: center;
+}
+
+#add-bl-item-btn {
+  background-color: #eb87cf;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  margin-right: 25px;
+  padding: 9px;
+}
+
+#add-bl-item-btn:hover {
+  cursor: pointer;
+  background-color: #cc77b4;
+}
+
+#bucket-list-details {
+  width: 100%;
+}
+
+.popup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  background: linear-gradient(180deg, #adbfed 0%, #fac3eb 92%);
+  border-radius: 8px;
+  height: 80vh;
+  width: 80vh;
+  margin-top: 80px;
+}
+
+#button-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.login-form-field {
+  margin-top: 15px;
+  padding: 8px;
+  border-radius: 8px;
+  width: 80%;
+  border: none;
+}
+
+.popup-title {
+  width: 100%;
+  text-align: center;
+}
+
+.purple-btn {
+  background: linear-gradient(45deg, #adbfed 0%, #9a90e6 60%);
+  margin: 10px;
+  border: none;
+  border-radius: 8px;
+  padding: 6px;
+  padding-left: 23px;
+  padding-right: 23px;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+}
+
+.details-icon {
+  width: 31px;
+  margin: 15px;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+}
+
+.pink-text {
+  color: #fac3eb;
+}
+
+.white-text {
+  color: white;
+}
+
+#trip-div {
+  padding: 10px;
+}
+
+.trip-details {
+  width: 95%;
+  padding: 10px;
+  border-radius: 8px;
+  color: black;
+  max-width: 95%;
+  max-height: 250px;
+}
+
+/* Base styles */
+#bucket-list-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: sans-serif;
+  margin-bottom: 1rem;
+  background-color: #202124;
+  color: #fff;
+  max-height: 550px;
+}
+
+th,
+td {
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+/* Table header styling */
+th {
+  background-color: #2c2e33;
+  font-weight: bold;
+  text-align: left; /* Or adjust as needed */
+}
+
+/* Optional: Zebra striping for even/odd rows */
+tr:nth-child(even) {
+  background-color: #28292c;
+}
+
+/* Optional: Hover effects */
+tr:hover {
+  background-color: #383a3e;
+}
+
+.delete-icon {
+  width: 20px;
+  cursor: pointer;
+}
+
+.popup.error {
+  background: none;
+  background-color: #ff5c5c;
+  z-index: 100;
+  width: 350px;
+  padding: 40px;
+  height: fit-content;
+  margin-top: 50px;
+}
